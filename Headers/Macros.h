@@ -15,5 +15,7 @@
 	P_KeyExpression; \
 	lua_gettable(L,-2);
 
-#define M_Def_Lua(P_Name) int Lua_##P_Name(lua_State* L)
-#define M_Push_Function(P_Name) lua_pushcfunction(L,Lua_##P_Name)
+#define M_Def_Lua(P_Name) int P_Name(lua_State* L)
+#define M_Export_Lua(P_Name) lua_pushcfunction(L,P_Name)
+#define M_Def_API(P_Name) M_Def_Lua(Lua_API_##P_Name)
+#define M_Export_API(P_Name) M_Export_Lua(Lua_API_##P_Name)
